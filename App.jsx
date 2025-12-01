@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import confetti from 'canvas-confetti';
-import { Heart, Zap, Music, Ghost, HelpCircle, Check, X, User } from 'lucide-react';
+import { Heart, Ghost, HelpCircle, Check, User } from 'lucide-react';
 
 // --- Configuration des Questions ---
 const QUESTIONS = [
@@ -52,11 +52,11 @@ const SECRET_NAME = "AUGUSTE";
 export default function App() {
   // --- États de l'application ---
   // Ajout de la vue 'reveal' pour quand on ne trouve pas à la fin
-  const [view, setView] = useState<'welcome' | 'question' | 'guess' | 'found' | 'reveal' | 'result'>('welcome');
+  const [view, setView] = useState('welcome');
   const [currentQIndex, setCurrentQIndex] = useState(0);
   const [chaosScore, setChaosScore] = useState(0);
   const [identityRevealed, setIdentityRevealed] = useState(false);
-  const [foundAtRound, setFoundAtRound] = useState<number | null>(null);
+  const [foundAtRound, setFoundAtRound] = useState(null);
   const [guessInput, setGuessInput] = useState("");
   const [shake, setShake] = useState(false); // Pour l'effet de vibration visuelle
 
@@ -72,7 +72,7 @@ export default function App() {
     setView('question');
   };
 
-  const handleAnswer = (chaosPoints: number) => {
+  const handleAnswer = (chaosPoints) => {
     playSound('pop');
     setChaosScore(prev => prev + chaosPoints);
     
@@ -429,5 +429,4 @@ export default function App() {
   }
 
   return null;
-
 }

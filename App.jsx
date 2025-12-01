@@ -62,7 +62,7 @@ export default function App() {
 
   // Effet sonore (simulé par console pour éviter les problèmes d'autoplay, 
   // mais on pourrait ajouter de vrais sons ici)
-  const playSound = (type: 'pop' | 'success' | 'fail') => {
+  const playSound = (type) => {
     // Dans une vraie app, on jouerait un Audio ici
     if (navigator.vibrate) navigator.vibrate(type === 'fail' ? 200 : 50);
   };
@@ -429,4 +429,5 @@ export default function App() {
   }
 
   return null;
+
 }
